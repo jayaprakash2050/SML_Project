@@ -1,0 +1,8 @@
+imputed=read.csv("imputed_continuous.csv")
+imputed$target = as.factor(imputed$target)
+str(imputed)
+#install.packages("caTools")
+library(caTools)
+spl = sample.split(imputed$target, SplitRatio = 0.7)
+Train = subset(imputed, spl==TRUE)
+Test = subset(imputed, spl==FALSE)
